@@ -300,9 +300,12 @@
       }
 
       .work-scene {
-        position: static;
-        width: min(70vw, 540px);
-        margin: 42px 0 0;
+        position: absolute;
+        z-index: 3;
+        left: -104px;
+        bottom: 5%;
+        width: 190px;
+        margin: 0;
         padding: 0;
         border: 0;
         border-radius: 0;
@@ -352,7 +355,7 @@
         .message { grid-template-columns: 1fr; gap: 18px; text-align: center; }
         .work-scene {
           position: static;
-          width: min(100%, 540px);
+          width: min(100%, 260px);
           margin: 28px 0 0;
           transform: rotate(-1deg);
         }
@@ -380,6 +383,9 @@
           </div>
 
           <div class="portrait-wrap" aria-label="Aidan portrait">
+            <figure class="work-scene">
+              <img src="assets/aidan-kim-work-scene.png" alt="에이든이 컴퓨터 앞에서 울고 있는 동료를 장난스럽게 독촉하는 생일 만화" width="1536" height="1024" loading="lazy" />
+            </figure>
             <span class="sticker" aria-hidden="true">best<br />day<br />ever</span>
             <img class="portrait" src="assets/aidan-kim.png" alt="환하게 웃고 있는 에이든의 모습" width="226" height="200" />
           </div>
@@ -396,9 +402,6 @@
           </div>
         </section>
 
-        <figure class="work-scene">
-          <img src="assets/aidan-kim-work-scene.png" alt="에이든이 컴퓨터 앞에서 울고 있는 동료를 장난스럽게 독촉하는 생일 만화" width="1536" height="1024" loading="lazy" />
-        </figure>
       </main>
 
       <footer class="footer">Creators Studio Squad · Made especially for Aidan</footer>
