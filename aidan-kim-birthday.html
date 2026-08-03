@@ -3,12 +3,372 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff9ed" />
     <title>Aidan Kim Birthday</title>
+    <style>
+      :root {
+        --ink: #263238;
+        --muted: #66747b;
+        --cream: #fff9ed;
+        --paper: rgba(255, 255, 255, 0.82);
+        --yellow: #ffc229;
+        --coral: #f47769;
+        --mint: #cfeee1;
+        --line: rgba(38, 50, 56, 0.12);
+        --shadow: 0 24px 70px rgba(82, 65, 25, 0.13);
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: "Pretendard", "Apple SD Gothic Neo", system-ui, sans-serif;
+        line-height: 1.6;
+      }
+
+      body::before,
+      body::after {
+        position: fixed;
+        z-index: -1;
+        width: 24rem;
+        height: 24rem;
+        border-radius: 50%;
+        content: "";
+        filter: blur(2px);
+        opacity: 0.65;
+      }
+
+      body::before { top: -10rem; left: -8rem; background: #ffe19b; }
+      body::after { right: -10rem; bottom: -11rem; background: #f8c7bd; }
+
+      .page {
+        width: min(100% - 32px, 1120px);
+        margin: 0 auto;
+        padding: 24px 0 48px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+      }
+
+      .brand {
+        color: var(--ink);
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .date {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .hero {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: clamp(32px, 7vw, 92px);
+        min-height: 680px;
+        padding: 56px 0 80px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 22px;
+        color: #ad7200;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        width: 28px;
+        height: 3px;
+        border-radius: 99px;
+        background: var(--coral);
+        content: "";
+      }
+
+      h1 {
+        max-width: 650px;
+        margin: 0;
+        font-size: clamp(3.3rem, 8vw, 7.1rem);
+        font-weight: 900;
+        letter-spacing: -0.075em;
+        line-height: 0.94;
+      }
+
+      h1 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+
+      .intro {
+        max-width: 460px;
+        margin: 28px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.02rem, 2vw, 1.2rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 22px;
+        border: 0;
+        border-radius: 999px;
+        color: var(--ink);
+        background: var(--yellow);
+        box-shadow: 0 10px 20px rgba(236, 168, 0, 0.2);
+        cursor: pointer;
+        font: inherit;
+        font-size: 0.92rem;
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .button:hover, .button:focus-visible {
+        box-shadow: 0 14px 24px rgba(236, 168, 0, 0.28);
+        transform: translateY(-2px);
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: none;
+      }
+
+      .portrait-wrap {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .portrait-wrap::before {
+        position: absolute;
+        width: min(82vw, 430px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--yellow);
+        content: "";
+        transform: rotate(-8deg);
+      }
+
+      .portrait-wrap::after {
+        position: absolute;
+        right: 4%;
+        bottom: 7%;
+        width: 92px;
+        height: 92px;
+        border: 2px dashed var(--coral);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .portrait {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: min(72vw, 360px);
+        aspect-ratio: 1;
+        border: 12px solid white;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+        transform: rotate(4deg);
+      }
+
+      .sticker {
+        position: absolute;
+        z-index: 2;
+        top: 2%;
+        right: 2%;
+        display: grid;
+        place-items: center;
+        width: 94px;
+        height: 94px;
+        border-radius: 50%;
+        color: white;
+        background: var(--coral);
+        box-shadow: 0 12px 24px rgba(244, 119, 105, 0.3);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1.15;
+        text-align: center;
+        text-transform: uppercase;
+        transform: rotate(12deg);
+      }
+
+      .message {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 28px;
+        align-items: center;
+        padding: clamp(28px, 5vw, 56px);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        border-radius: 28px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .message-label {
+        margin: 0;
+        color: #ad7200;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .message h2 {
+        margin: 10px 0 0;
+        font-size: clamp(1.7rem, 4vw, 2.8rem);
+        letter-spacing: -0.05em;
+        line-height: 1.05;
+      }
+
+      .message-copy {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.8;
+      }
+
+      .signature {
+        display: block;
+        margin-top: 18px;
+        color: var(--ink);
+        font-size: 0.85rem;
+        font-weight: 800;
+      }
+
+      .footer {
+        padding-top: 28px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      .confetti {
+        position: fixed;
+        z-index: 3;
+        width: 8px;
+        height: 14px;
+        pointer-events: none;
+        animation: fall 1.2s ease-in forwards;
+      }
+
+      @keyframes fall {
+        to { opacity: 0; transform: translate3d(var(--x), 90vh, 0) rotate(360deg); }
+      }
+
+      :focus-visible { outline: 3px solid #167c80; outline-offset: 4px; }
+
+      @media (max-width: 760px) {
+        .page { width: min(100% - 24px, 560px); padding-top: 16px; }
+        .date { display: none; }
+        .hero { grid-template-columns: 1fr; min-height: auto; padding: 68px 0 76px; }
+        .hero-copy { order: 1; text-align: center; }
+        .eyebrow { justify-content: center; }
+        h1 { margin-inline: auto; }
+        .intro { margin-inline: auto; }
+        .actions { justify-content: center; }
+        .portrait-wrap { order: 0; margin: 0 auto; width: min(100%, 390px); }
+        .sticker { right: 0; }
+        .message { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      }
+    </style>
   </head>
   <body>
-    <main>
-      <h1>Happy Birthday, Aidan Kim!</h1>
-      <p>에이든 킴님의 생일을 진심으로 축하합니다.</p>
-    </main>
+    <div class="page">
+      <header class="topbar">
+        <a class="brand" href="./aidan-kim-birthday.html" aria-label="Aidan Kim birthday home">AK / 2026</a>
+        <span class="date">A LITTLE CELEBRATION</span>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Today is your day</p>
+            <h1 id="page-title">Happy<br /><em>Birthday,</em><br />Aidan Kim.</h1>
+            <p class="intro">좋은 사람에게는 좋은 하루가 필요하니까. 오늘만큼은 마음껏 웃고, 맛있는 것 모두 먹어요.</p>
+            <div class="actions">
+              <button class="button" type="button" id="celebrate">축하 폭죽 터뜨리기</button>
+              <a class="button secondary" href="#message">메시지 읽기</a>
+            </div>
+          </div>
+
+          <div class="portrait-wrap" aria-label="Aidan Kim portrait">
+            <span class="sticker" aria-hidden="true">best<br />day<br />ever</span>
+            <img class="portrait" src="assets/aidan-kim.png" alt="환하게 웃고 있는 에이든 킴의 모습" width="226" height="200" />
+          </div>
+        </section>
+
+        <section class="message" id="message" aria-labelledby="message-title">
+          <div>
+            <p class="message-label">A note for you</p>
+            <h2 id="message-title">오늘의 주인공은<br />바로 당신이에요.</h2>
+          </div>
+          <div>
+            <p class="message-copy">새로운 한 해도 지금처럼 따뜻하고 멋진 순간들로 가득하길 바라요. 하고 싶은 일은 전부 이루고, 매일의 작은 행복도 놓치지 않기를!</p>
+            <span class="signature">with lots of love · 2026</span>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">Made especially for Aidan Kim · Keep shining ✦</footer>
+    </div>
+
+    <script>
+      const celebrateButton = document.querySelector("#celebrate");
+      const colors = ["#ffc229", "#f47769", "#cfeee1", "#263238"];
+
+      celebrateButton.addEventListener("click", () => {
+        for (let i = 0; i < 28; i += 1) {
+          const piece = document.createElement("span");
+          piece.className = "confetti";
+          piece.style.left = `${35 + Math.random() * 30}%`;
+          piece.style.top = `${18 + Math.random() * 10}%`;
+          piece.style.background = colors[i % colors.length];
+          piece.style.setProperty("--x", `${(Math.random() - 0.5) * 70}vw`);
+          piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+          document.body.append(piece);
+          piece.addEventListener("animationend", () => piece.remove(), { once: true });
+        }
+      });
+    </script>
   </body>
 </html>
