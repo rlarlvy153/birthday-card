@@ -277,6 +277,42 @@
         text-align: center;
       }
 
+      .work-scene {
+        position: fixed;
+        z-index: 4;
+        right: 18px;
+        bottom: 18px;
+        width: min(25vw, 280px);
+        margin: 0;
+        padding: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 18px 38px rgba(82, 65, 25, 0.18);
+        transform: rotate(2deg);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .work-scene:hover {
+        box-shadow: 0 22px 44px rgba(82, 65, 25, 0.24);
+        transform: rotate(0deg) translateY(-3px);
+      }
+
+      .work-scene img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+      }
+
+      .work-scene figcaption {
+        padding: 6px 4px 2px;
+        color: var(--muted);
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-align: center;
+      }
+
       .confetti {
         position: fixed;
         z-index: 3;
@@ -304,6 +340,12 @@
         .portrait-wrap { order: 0; margin: 0 auto; width: min(100%, 390px); }
         .sticker { right: 0; }
         .message { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+        .work-scene {
+          position: static;
+          width: min(100%, 360px);
+          margin: 28px auto 0;
+          transform: rotate(-1deg);
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -347,6 +389,11 @@
             <span class="signature">with lots of love · 2026</span>
           </div>
         </section>
+
+        <figure class="work-scene">
+          <img src="assets/aidan-kim-work-scene.png" alt="에이든 킴이 컴퓨터 앞에서 일하는 동료를 장난스럽게 응원하는 생일 만화" width="1536" height="1024" loading="lazy" />
+          <figcaption>오늘도 조금만 더 힘내요 ✦</figcaption>
+        </figure>
       </main>
 
       <footer class="footer">Made especially for Aidan Kim · Keep shining ✦</footer>
