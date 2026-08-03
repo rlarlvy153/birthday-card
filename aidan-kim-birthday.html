@@ -293,19 +293,18 @@
         z-index: 4;
         right: 18px;
         bottom: 18px;
-        width: min(25vw, 260px);
+        width: min(32vw, 360px);
         margin: 0;
-        padding: 7px;
-        border: 1px solid rgba(255, 255, 255, 0.95);
-        border-radius: 24px;
-        background: rgba(255, 255, 255, 0.86);
-        box-shadow: 0 18px 38px rgba(82, 65, 25, 0.18);
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
         transform: rotate(2deg);
         transition: transform 180ms ease, box-shadow 180ms ease;
       }
 
       .work-scene:hover {
-        box-shadow: 0 22px 44px rgba(82, 65, 25, 0.24);
         transform: rotate(0deg) translateY(-3px);
       }
 
@@ -313,15 +312,7 @@
         display: block;
         width: 100%;
         height: auto;
-        border-radius: 14px;
-      }
-
-      .work-scene figcaption {
-        padding: 6px 4px 2px;
-        color: var(--muted);
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-align: center;
+        border-radius: 18px;
       }
 
       .confetti {
@@ -403,7 +394,6 @@
 
         <figure class="work-scene">
           <img src="assets/aidan-kim-work-scene.png" alt="에이든 킴이 컴퓨터 앞에서 울고 있는 동료를 장난스럽게 독촉하는 생일 만화" width="1536" height="1024" loading="lazy" />
-          <figcaption>울어도 귀엽고, 생일이면 더 귀여워요 ✦</figcaption>
         </figure>
       </main>
 
