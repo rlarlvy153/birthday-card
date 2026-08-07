@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffaf2" />
+    <title>Happy Birthday, Ian</title>
+    <style>
+      :root { --paper:#fffaf2; --ink:#75695f; --pink:#ffc0bc; --blue:#c9e4eb; --yellow:#ffe2a8; --mint:#d6e5c8; --line:#9d8f82; --coral:#e7837d; }
+      * { box-sizing: border-box; }
+      html { min-width:320px; background:#fff7ec; }
+      body { min-height:100dvh; margin:0; overflow-x:hidden; color:var(--ink); background:radial-gradient(rgba(156,132,109,.13) .7px,transparent .7px) 0 0/7px 7px,#fff7ec; font-family:"Apple SD Gothic Neo",system-ui,sans-serif; }
+      .page { position:relative; width:min(100% - 28px,920px); min-height:100dvh; margin:auto; padding:32px clamp(24px,6vw,72px) 44px; overflow:hidden; background:var(--paper); box-shadow:0 0 0 1px rgba(139,118,100,.08),0 8px 35px rgba(124,98,73,.1); }
+      .reference-art { position:absolute; z-index:0; background-image:url("assets/birthday-card-background-clean.png"); background-repeat:no-repeat; pointer-events:none; }
+      .reference-art.top { top:0; left:50%; width:400px; height:72px; background-position:center top; background-size:400px 400px; transform:translateX(-50%); }
+      .reference-art.left { top:82px; left:0; width:125px; height:318px; background-position:left bottom; background-size:400px 400px; }
+      .reference-art.right { top:82px; right:0; width:125px; height:318px; background-position:right bottom; background-size:400px 400px; }
+      .garland { display:none; position:absolute; top:0; left:0; align-items:flex-start; width:100%; height:62px; padding:0 3%; border-top:2px solid var(--line); }
+      .garland span { width:clamp(24px,5vw,42px); height:clamp(28px,5vw,45px); border:1.5px solid var(--line); border-top:0; clip-path:polygon(0 0,100% 0,50% 100%); }
+      .garland span:nth-child(4n+1){background:var(--pink)} .garland span:nth-child(4n+2){background:var(--yellow)} .garland span:nth-child(4n+3){background:var(--blue)} .garland span:nth-child(4n){background:var(--mint)}
+      .balloon { display:none; position:absolute; z-index:0; width:94px; height:110px; border:2px solid rgba(117,105,95,.65); border-radius:50% 50% 48% 48%; opacity:.85; }
+      .balloon::after { position:absolute; top:107px; left:45px; width:1px; height:125px; background:var(--line); content:""; transform:rotate(5deg); transform-origin:top; }
+      .balloon::before { position:absolute; top:20px; left:21px; width:15px; height:28px; border-radius:50%; background:rgba(255,255,255,.55); content:""; transform:rotate(35deg); }
+      .balloon.left { top:105px; left:-42px; background:var(--blue); } .balloon.right { top:130px; right:-40px; background:var(--pink); transform:rotate(8deg); }
+      main { position:relative; z-index:1; max-width:720px; margin:auto; text-align:center; }
+      .greeting-card { display:block; width:min(100%,620px); height:auto; margin:0 auto; border-radius:16px; box-shadow:0 5px 18px rgba(124,98,73,.13); }
+      .eyebrow { margin:18px 0 5px; color:var(--coral); font-size:.75rem; font-weight:800; letter-spacing:.12em; }
+      h1 { margin:0; color:#74675f; font-family:cursive; font-size:clamp(3.4rem,9vw,6.4rem); font-weight:700; letter-spacing:-.08em; line-height:.9; }
+      h1 span { display:block; margin-top:6px; font-size:.55em; letter-spacing:-.04em; }
+      .letter { max-width:470px; margin:22px auto 0; font-size:clamp(.94rem,2.1vw,1.07rem); font-weight:500; line-height:2; word-break:keep-all; }
+      .train-card { position:relative; width:100%; margin:28px auto 0; padding:0; overflow:hidden; border:1.5px solid #a9988a; border-radius:14px; background:transparent; box-shadow:0 5px 0 rgba(157,143,130,.18); transform:rotate(-.6deg); }
+      .train-card::before, .train-card::after { position:absolute; z-index:-1; width:48px; height:48px; border:2px solid rgba(157,143,130,.45); border-radius:50%; background:var(--yellow); content:""; }
+      .train-card::before { top:-20px; left:-26px; } .train-card::after { right:-25px; bottom:-18px; background:var(--mint); }
+      .train-card img { display:block; width:100%; height:auto; aspect-ratio:3 / 2; object-fit:cover; }
+      .caption { display:inline-block; margin:15px 0 0; padding:7px 13px; border-bottom:1.5px solid var(--line); color:#82746b; font-family:cursive; font-size:1.15rem; transform:rotate(1.5deg); }
+      .gift-row { display:flex; justify-content:center; align-items:end; gap:10px; margin-top:25px; }
+      .gift { position:relative; width:68px; height:52px; border:1.5px solid var(--line); background:var(--blue); }
+      .gift::before { position:absolute; top:-6px; bottom:0; left:29px; width:8px; background:var(--pink); content:""; }
+      .gift::after { position:absolute; top:-13px; left:20px; width:27px; height:13px; border:1.5px solid var(--line); border-radius:50% 50% 0 0; background:var(--pink); content:""; }
+      .gift:nth-child(2){width:82px;height:65px;background:var(--pink)} .gift:nth-child(2)::before,.gift:nth-child(2)::after{background:var(--yellow)} .gift:nth-child(3){width:55px;height:43px;background:var(--mint)}
+      .wish { min-height:24px; margin:20px 0 0; color:var(--coral); font-size:.92rem; font-weight:800; }
+      .wish-button { min-height:44px; margin-top:10px; padding:0 16px; border:1.5px solid var(--line); border-radius:999px; background:transparent; color:var(--ink); cursor:pointer; font:inherit; font-size:.84rem; font-weight:800; transition:background 180ms ease,transform 180ms ease; }
+      .wish-button:hover,.wish-button:focus-visible { background:var(--yellow); transform:translateY(-2px); } .wish-button:focus-visible { outline:3px solid var(--coral); outline-offset:3px; }
+      @media (max-width:560px){ .page{width:100%; padding:18px 14px 32px;} .reference-art.top{width:100%;background-size:400px 400px;} .reference-art.left,.reference-art.right{width:70px;opacity:.38;} .balloon{display:none;} .garland{height:48px;} .letter{line-height:1.8;} .train-card{margin-top:22px;} }
+      @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;}}
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="garland" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="balloon left" aria-hidden="true"></div><div class="balloon right" aria-hidden="true"></div>
+      <main>
+        <img class="greeting-card" src="assets/ian-birthday-card-final.png" alt="이안님의 생일을 축하하는 토끼와 케이크 카드" width="1254" height="1254" />
+        <figure class="train-card">
+          <img src="assets/ian-train-birthday-labeled-v2.png" alt="이안, 글렌, 제이가 함께한 춘식열차 일러스트" width="1536" height="1024" />
+        </figure>
+        <p class="caption">춘식열차와 함께, 행복한 하루 출발!</p>
+        <div class="gift-row" aria-hidden="true"><div class="gift"></div><div class="gift"></div><div class="gift"></div></div>
+        <button class="wish-button" type="button" id="wish-button">오늘의 축하 한마디 보기</button>
+        <p class="wish" id="wish" aria-live="polite"></p>
+      </main>
+    </div>
+    <script>
+      const wishes=['이안님의 하루에 웃음이 한가득 피어나길 바랍니다.', '좋아하는 것들만 만나는 가장 멋진 생일 되세요!', '유저&크리에이터트라이브가 이안님을 응원합니다.'];
+      const button=document.querySelector('#wish-button'); const wish=document.querySelector('#wish'); let index=0;
+      button.addEventListener('click',()=>{wish.textContent=wishes[index];index=(index+1)%wishes.length;});
+    </script>
+  </body>
+</html>
